@@ -1,8 +1,23 @@
 use rand::Rng; //rand is a crate that provides the random number generator
-use std::cmp::Ordering;
+// use std::cmp::Ordering;
 use std::io;
 fn main() {
-    let correct = rand::thread_rng().gen_range(1..=10);
+  let mut how_many=String::new();
+  io::stdin().read_line(&mut how_many).expect("error reading input");
+  
+  println!("how many random numbers do you want to guess");
+       
+   let num_guesses:u8=how_many.trim().parse().expect("please type a number");
+  let mut correct=Vec::new();
+ for _ in 0..num_guesses  {
+ correct.push( rand::thread_rng().gen_range(1..=10) );
+    
+}
+   println!("{correct:?}");
+  
+   let mut guesses_made
+
+  
     // println!("correct:{correct}");
     println!("Hello there ");
     println!("Guesss a number from 1-10");
@@ -13,7 +28,7 @@ fn main() {
             .read_line(&mut guess) //read_line is used to read the input from the user
             .expect("error reading input");
         // when you use expect it just ignores the error and continues the execution so for a little more good code like before when we added negative number it just break the loop but now it gives us the error message that hey you did this wrong you entered invalid number :
-
+// u32 here is representing the storage of the variable that we are going to enter it can be u8 u16 u32 u64 u128 usize
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(e) => {
@@ -67,13 +82,14 @@ fn main() {
         //     }
         // };
         // println!("{message}");
-        match guess.cmp(&correct) {
-            Ordering::Greater => println!("you picked greater number"),
-            Ordering::Less => println!("you picked smaller number"),
-            Ordering::Equal => {
-                println!("you chose the correct number");
-                break;
-            } // we can also just remove the variable
-        };
-    }
+    //     match guess.cmp(&correct) {
+    //         Ordering::Greater => println!("you picked greater number"),
+    //         Ordering::Less => println!("you picked smaller number"),
+    //         Ordering::Equal => {
+    //             println!("you chose the correct number");
+    //             break;
+    //         } // we can also just remove the variable
+    //     };
+    // }
+
 }
